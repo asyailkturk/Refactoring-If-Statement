@@ -29,41 +29,27 @@ public class Rover {
     }
 
     public void move() {
-        if (Compass.NORTH.equals(this.compass)) {
-            this.y = this.y + 1;
-        } else if (Compass.EAST.equals(this.compass)) {
-            this.x = this.x + 1;
-        } else if (Compass.SOUTH.equals(this.compass)) {
-            this.y = this.y - 1;
-        } else if (Compass.WEST.equals(this.compass)) {
-            this.x = this.x - 1;
+//
+        switch (this.compass){
+            case NORTH:
+                this.y = this.y + 1;
+            case EAST:
+                this.x=this.x+1;
+            case SOUTH:
+                this.y = this.y - 1;
+            case WEST:
+                this.x = this.x - 1;
         }
         this.material.add(new Material(this.compass.name()));
     }
 
     public void turnLeft() {
-        if (Compass.NORTH.equals(this.compass)) {
-            this.compass = Compass.WEST;
-        } else if (Compass.WEST.equals(this.compass)) {
-            this.compass = Compass.SOUTH;
-        } else if (Compass.SOUTH.equals(this.compass)) {
-            this.compass = Compass.EAST;
-        } else if (Compass.EAST.equals(this.compass)) {
-            this.compass = Compass.NORTH;
-        }
+      this.compass=compass.left();
         this.material.add(new Material(this.compass.name()));
     }
 
     public void turnRight() {
-        if (Compass.NORTH.equals(this.compass)) {
-            this.compass = Compass.EAST;
-        } else if (Compass.EAST.equals(this.compass)) {
-            this.compass = Compass.SOUTH;
-        } else if (Compass.SOUTH.equals(this.compass)) {
-            this.compass = Compass.WEST;
-        } else if (Compass.WEST.equals(this.compass)) {
-            this.compass = Compass.NORTH;
-        }
+        this.compass=compass.right();
         this.material.add(new Material(this.compass.name()));
     }
 
